@@ -87,8 +87,8 @@ else {
 $live = WaitTitle -ProcessName "chrome" -Title "Live*"
 if (!$live) {
     Start-Process -FilePath "C:\Program Files\Google\Chrome\Application\chrome.exe" -ArgumentList '--profile-directory="Profile 1"','https://studio.youtube.com/channel/UC_-UujZCgRNRIWhShAtWYbA/livestreaming'
-    Start-Sleep -Seconds 1
-	WaitTitle -ProcessName "chrome" -Title "Live*" -Count 20 | Set-Window -X 1280 -Y 80 -Width 1280 -Height 720
+    # Start-Sleep -Seconds 1
+	# WaitTitle -ProcessName "chrome" -Title "Live*" -Count 20 | Set-Window -X 1280 -Y 80 -Width 1280 -Height 720
 }
 else {
     ContinueOrExit $meet + " already started! Continue script? [Y/N]"
@@ -97,7 +97,7 @@ else {
 $vlc = WaitTitle -ProcessName "vlc" -Title "VLC *"
 if (!$vlc) {
     Start-Process -FilePath "C:\Program Files\VideoLAN\VLC\vlc.exe"
-	WaitTitle -ProcessName "vlc" -Title "VLC *" -Count 20 | Set-Window -X 0 -Y 1000
+	# WaitTitle -ProcessName "vlc" -Title "VLC *" -Count 20 | Set-Window -X 0 -Y 1000
 }
 else {
     ContinueOrExit $vlc + " already started! Continue script? [Y/N]"
@@ -106,12 +106,20 @@ else {
 $obs = WaitTitle -ProcessName "obs64" -Title "OBS *"
 if (!$obs) {
     Start-Process -FilePath "C:\Program Files\obs-studio\bin\64bit\obs64.exe" -WorkingDirectory "C:\Program Files\obs-studio\bin\64bit"
-	WaitTitle -ProcessName "obs64" -Title "OBS *" -Count 20 | Set-Window -X 1600 -Y 1000 -Width 1280 -Height 600
+	# WaitTitle -ProcessName "obs64" -Title "OBS *" -Count 20 | Set-Window -X 1600 -Y 1000 -Width 1280 -Height 600
 }
 else {
     ContinueOrExit $obs + " already started! Continue script? [Y/N]"
 }
 
-WaitTitle -ProcessName "listener" -Title "ATPC*" -Count 100 | Set-Window -X 0 -Y 800 -Width 1280 -Height 300
-start-sleep -Seconds 14
-WaitTitle -ProcessName "X-AIR*" -Title "X AIR*" -Count 200 | Set-Window -X 2300 -Y 1175 -Width 780 -Height 480
+$vmt = WaitTitle -ProcessName "Voice*" -Title "Voice*"
+if (!$vmt) {
+    Start-Process -FilePath "C:\Program Files (x86)\VB\Voicemeeter\voicemeeterpro.exe"
+}
+else {
+    ContinueOrExit $vmt + " already started! Continue script? [Y/N]"
+}
+
+# WaitTitle -ProcessName "listener" -Title "ATPC*" -Count 100 | Set-Window -X 0 -Y 800 -Width 1280 -Height 300
+# start-sleep -Seconds 14
+# WaitTitle -ProcessName "X-AIR*" -Title "X AIR*" -Count 200 | Set-Window -X 2300 -Y 1175 -Width 780 -Height 480
