@@ -13,6 +13,8 @@ function ContinueOrExit {
     }
 }
 
+Select-UIElement -Name "Voice*" | Send-UIKeys "%{f4}y"
+start-sleep -Seconds 1
 Select-UIElement -Name "ATPCPost*" | Send-UIKeys "%{f4}y"
 start-sleep -Seconds 1
 Select-UIElement -Name "Meet*" | Send-UIKeys "%{f4}"
